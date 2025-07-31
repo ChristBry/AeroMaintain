@@ -1,24 +1,27 @@
 import { Link, Outlet } from 'react-router-dom'
 import '../styles/StyleAdmin.css'
 import { HugeiconsIcon } from '@hugeicons/react';
-import { GridViewIcon, Airplane02Icon, Calendar03Icon, Configuration01Icon, AirplaneTakeOff01Icon, ToolsIcon, Chart03Icon, Target02Icon, PassportValidIcon, UserGroupIcon, OfficeIcon, Blockchain06Icon, LoginSquare02Icon, UserCircleIcon } from '@hugeicons/core-free-icons';
+import { GridViewIcon, Airplane02Icon, Alert02Icon, ToolsIcon, Chart03Icon, Target02Icon, PassportValidIcon, UserGroupIcon, OfficeIcon, Blockchain06Icon, LoginSquare02Icon, UserCircleIcon } from '@hugeicons/core-free-icons';
 
 const HomePage = () => {
 
   return (
     <div className="admin-layout row flex">
+
       {/* Barre de Navigation Latérale */}
-      <nav className="sidebar border-r-1 w-80">
+      <nav className="sidebar border-r-1 w-70">
+        {/* Logo et Nom de l'Application */}
         <div className="logo-section border-b-2 border-gray-100">
           <img src="../src/assets/images/LogoAero.png" alt="AéroMaintain Logo" className="app-logo w-35 cursor-pointer" />
           <p className="app-name text-[10px] capitalize">Gestion de la flotte aérienne</p>
         </div>
 
+        {/* Menu de Navigation */}
         <ul className="nav-menu">
           {/* Section Vue d'ensemble */}
           <li className="nav-item border-b-2 border-gray-300">
             <h3 className="section-title text-[15px] text-gray-500 uppercase">Vue d'ensemble</h3>
-            <Link to="/dashboard" className="nav-link flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
+            <Link to="/home" className="nav-link flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
               <HugeiconsIcon icon={GridViewIcon} size={20} className='home-icon' /> Tableau de bord
             </Link>
           </li>
@@ -28,24 +31,24 @@ const HomePage = () => {
             <h3 className="section-title text-[15px] text-gray-500 uppercase">Gestion des Aéronefs</h3>
             <ul className="submenu">
               <li>
-                <Link to="/aeronefs" className="nav-link flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
+                <Link to="/home/aeronefs" className="nav-link flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
                   <HugeiconsIcon icon={Airplane02Icon} size={20} className='home-icon' /> Aéronefs
                 </Link>
               </li>
               <li>
-                <Link to="/aeronefs/performance" className="nav-link flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
+                <Link to="/home/performances" className="nav-link flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
                   <HugeiconsIcon icon={Chart03Icon} size={20} className='home-icon' /> Performances
                 </Link>
               </li>
               <li>
-                <Link to="/aeronefs/maintenance" className="nav-link flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
-                  <HugeiconsIcon icon={Configuration01Icon} size={20} className='home-icon' /> Maintenance
+                <Link to="/home/incidents" className="nav-link flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
+                  <HugeiconsIcon icon={Alert02Icon} size={20} className='home-icon' /> Incidents
                 </Link>
               </li>
             </ul>
           </li>
 
-          {/* Section Gestion des vols */}
+          {/* Section Gestion des vols
           <li className="nav-item border-b-2 border-gray-300">
             <h3 className="section-title section-title text-[15px] text-gray-500 uppercase">Gestion des Vols</h3>
             <ul className="submenu">
@@ -61,19 +64,20 @@ const HomePage = () => {
               </li>
             </ul>
           </li>
+          */}
 
           {/* Section Gestion de la Maintenance */}
           <li className="nav-item border-b-2 border-gray-300">
             <h3 className="section-title text-[15px] text-gray-500 uppercase">Gestion de la Maintenance</h3>
             <ul className="submenu">
               <li>
-                <Link to="/maintenance/operations" className="nav-link flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
+                <Link to="/home/operations" className="nav-link flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
                   <HugeiconsIcon icon={ToolsIcon} size={20} className='home-icon' /> Opérations
                 </Link>
               </li>
               <li>
-                <Link to="/maintenance/suivi" className="nav-link flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
-                  <HugeiconsIcon icon={Target02Icon} size={20} className='home-icon' /> Suivi
+                <Link to="/home/suivi_operations" className="nav-link flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
+                  <HugeiconsIcon icon={Target02Icon} size={20} className='home-icon' /> Suivi des tâches
                 </Link>
               </li>
             </ul>
@@ -122,7 +126,7 @@ const HomePage = () => {
         </div>
 
         {/*User Profile Section*/}
-        <div className="user-profile fixed bottom-0 cursor-pointer flex items-center justify-around w-[280px] border-t-1 border-r-1 border-gray-300">
+        <div className="user-profile w-70 fixed bottom-0 cursor-pointer flex items-center justify-around border-t-1 border-r-1">
           <div className='flex items-center gap-4'>
             <h4 className='text-[18px] font-bold rounded-lg'>TB</h4>
             <div>
