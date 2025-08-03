@@ -21,8 +21,8 @@ const headerPage = (props: { title: string }) => {
                 <HugeiconsIcon icon={Notification01Icon} size={24} className='icon-notification' />
                 <div className="mode-icon cursor-pointer rounded-lg" onClick={toggleTheme}>
                     <HugeiconsIcon
-                        icon={Moon02Icon}
-                        altIcon={SunIcon}
+                        icon={SunIcon}
+                        altIcon={Moon02Icon}
                         showAlt={isDarkTheme}
                         size={20}
                         className=''

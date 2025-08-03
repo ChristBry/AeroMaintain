@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { HugeiconsIcon } from '@hugeicons/react';
-import { ArrowDown01Icon, DateTimeIcon, Delete02Icon, Location05Icon, TimeScheduleIcon } from '@hugeicons/core-free-icons';
+import { ArrowDown01Icon, DateTimeIcon, AirplaneTakeOff01Icon, Delete02Icon, Location05Icon, TimeScheduleIcon } from '@hugeicons/core-free-icons';
 
 
 const CardAeronef = (props: { 
@@ -32,7 +32,8 @@ const CardAeronef = (props: {
                     <h3 className='text-[16px] font-semibold'>{props.immat}</h3>
                     <p className={`statut-aeronef ${statutClass(props.statut)} rounded-lg text-[12px] font-semibold`}>{props.statut}</p>
                 </div>
-                <div>
+                <div className='flex items-center gap-2'>
+                    <HugeiconsIcon icon={AirplaneTakeOff01Icon} size={16} />
                     <h3>{props.constructeur} {props.modele}</h3>
                 </div>
                 <div className='card-details flex items-center gap-2'>

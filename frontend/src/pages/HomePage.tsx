@@ -1,9 +1,16 @@
 import { Link, Outlet } from 'react-router-dom'
 import '../styles/StyleAdmin.css'
 import { HugeiconsIcon } from '@hugeicons/react';
-import { GridViewIcon, Airplane02Icon, Alert02Icon, ToolsIcon, Chart03Icon, Target02Icon, PassportValidIcon, UserGroupIcon, OfficeIcon, Blockchain06Icon, LoginSquare02Icon, UserCircleIcon } from '@hugeicons/core-free-icons';
+import { GridViewIcon, Airplane02Icon, Alert02Icon, ToolsIcon, ArrowDownIcon, Chart03Icon, Target02Icon, PassportValidIcon, UserGroupIcon, OfficeIcon, Blockchain06Icon, LoginSquare02Icon, UserCircleIcon, ListSettingIcon, Wrench01Icon } from '@hugeicons/core-free-icons';
+import { useState } from 'react';
 
 const HomePage = () => {
+
+  const [isTasksMenuOpen, setIsTasksMenuOpen] = useState(false); // État pour gérer l'ouverture/fermeture du sous-menu
+
+  const toggleTasksMenu = () => {
+    setIsTasksMenuOpen(!isTasksMenuOpen);
+  };
 
   return (
     <div className="admin-layout row flex">
@@ -76,9 +83,32 @@ const HomePage = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/home/suivi_operations" className="nav-link flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
-                  <HugeiconsIcon icon={Target02Icon} size={20} className='home-icon' /> Suivi des tâches
-                </Link>
+                <div
+                  onClick={toggleTasksMenu}
+                  className="nav-link task-menu flex items-center text-[16px] rounded-lg w-60 transition-all duration-300 cursor-pointer"
+                >
+                  <HugeiconsIcon icon={Target02Icon} size={20} className='home-icon' />
+                  Suivi des tâches
+                  <HugeiconsIcon
+                    icon={ArrowDownIcon}
+                    size={20}
+                    className={`ml-auto icon-list transition-transform duration-300 ${isTasksMenuOpen ? 'rotate-180' : ''}`}
+                  />
+                </div>
+                <ul className={`sub-menu-task overflow-hidden transition-all duration-300 ease-in-out ${isTasksMenuOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <li className="ml-6 mt-2">
+                    <Link to="/home/maintenances_programmees" className="nav-link flex items-center text-[13px] rounded-lg w-auto transition-all duration-300">
+                      <HugeiconsIcon icon={ListSettingIcon} className='home-icon' />
+                      Maintenances programmées
+                    </Link>
+                  </li>
+                  <li className="ml-6 mt-1">
+                    <Link to="/home/maintenances_non_programmees" className="nav-link flex items-center text-[13px] rounded-lg w-auto transition-all duration-300">
+                      <HugeiconsIcon icon={Wrench01Icon} className='home-icon' />
+                      Maintenances non programmées
+                    </Link>
+                  </li>
+                </ul>
               </li>
             </ul>
           </li>
@@ -105,12 +135,12 @@ const HomePage = () => {
             <h3 className="section-title text-[15px] text-gray-500 uppercase">Gestion des Stocks</h3>
             <ul className="submenu">
               <li>
-                <Link to="/stocks/pieces" className="nav-link flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
+                <Link to="/home/stock" className="nav-link flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
                   <HugeiconsIcon icon={Blockchain06Icon} size={20} className='home-icon' /> Pièces & Équipements
                 </Link>
               </li>
               <li>
-                <Link to="/prestataires" className="nav-link flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
+                <Link to="/home/prestaires" className="nav-link flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
                   <HugeiconsIcon icon={OfficeIcon} size={20} className='home-icon' /> Prestataires
                 </Link>
               </li>
@@ -120,9 +150,9 @@ const HomePage = () => {
 
         {/* Bouton de Déconnexion */}
         <div className="logout-section">
-          <button className="logout-button flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
+          <Link to='/' className="logout-button flex items-center text-[16px] rounded-lg w-60 transition-all duration-300">
             <HugeiconsIcon icon={LoginSquare02Icon} size={20} className='home-icon' /> Déconnexion
-          </button>
+          </Link>
         </div>
 
         {/*User Profile Section*/}

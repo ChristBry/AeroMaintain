@@ -79,7 +79,7 @@ button {
 }
 
 .login-form .forgot-password {
-    color: var(--color-primary-100);
+    color: var(--color-primary-200);
 }
 
 .login-input {
@@ -95,6 +95,7 @@ button {
 .login-input input {
     border-color: var(--color-primary-200);
     padding: 5px;
+    color: var(--text-black-100);
     padding-left: 45px;
 }
 
@@ -171,6 +172,14 @@ body.nav-closed .sidebar {
 .nav-link:hover {
     background-color: var(--color-primary-200);
     color: var(--text-white-100);
+}
+
+.sub-menu-task {
+    padding-left: 30px;
+}
+
+.task-menu .icon-list {
+    margin-left: 5px;
 }
 
 .home-icon {
@@ -292,7 +301,8 @@ body.nav-closed .header-right {
     color: var(--text-black-100);
 }
 
-.stats-item-value, .stats-item-value-total {    
+.stats-item-value,
+.stats-item-value-total {
     margin: 10px 0px 0px 15px;
 }
 
@@ -385,13 +395,6 @@ body.nav-closed .header-right {
     margin: 20px 120px;
 }
 
-.list-mecaniciens,
-.list-assignments,
-.list-incidents {
-    
-    
-}
-
 .list-mecaniciens h3,
 .list-assignments h3,
 .list-incidents h3 {
@@ -401,33 +404,49 @@ body.nav-closed .header-right {
 }
 
 .table-mecaniciens,
-.table-assignments {
+.table-assignments,
+.table-operations {
     margin-bottom: 30px;
 }
 
 .table-header-mecaniciens th,
 .table-body-incidents th,
 .table-assignments th,
-.table-header-incidents th {
+.table-header-incidents th,
+.table-header-mecaniciens th {
     font-family: 'Open Sans', 'Arial';
     color: var(--text-white-100);
     padding: 10px 20px 10px 20px;
 }
 
-.table-header-incidents, .table-header-mecaniciens {
+.table-header-incidents,
+.table-header-mecaniciens {
     background-color: var(--color-primary-200);
 }
 
-.table-body-incidents tr:hover, .table-body-mecaniciens tr:hover, .table-body-assignments tr:hover {
+.table-body-incidents tr:hover,
+.table-body-mecaniciens tr:hover,
+.table-body-assignments tr:hover,
+.table-body-operations tr:hover {
     background-color: var(--bg-black-50);
 }
 
 .table-body-mecaniciens td,
 .table-body-assignments td,
-.table-body-incidents td {
+.table-body-incidents td,
+.table-body-operations td {
     font-family: 'Open Sans', 'Arial';
     color: var(--text-black-100);
     padding: 20px 10px 20px 20px;
+}
+
+.table-body-operations .info-task {
+    margin-top: 20px;
+    color: gray;
+}
+
+.table-body-operations span {
+    color: gray;
 }
 
 .mecanicien-status.disponible {
@@ -435,8 +454,34 @@ body.nav-closed .header-right {
     padding: 5px;
 }
 
-.mecanicien-status.conges {
+.statut-nontask.closed,
+.statut-command.livrer, .statut-prestataire.regulier {
+    background-color: rgb(61, 192, 61);
+    color: var(--text-white-100);
+    padding: 5px;
+}
+
+.statut-nontask.open, .statut-prestataire.ponctuel {
+    background-color: rgb(238, 61, 61);
+    color: var(--text-white-100);
+    padding: 5px;
+}
+
+.mecanicien-status.conges,
+.operation-status.en-cours,
+.statut-command.en-cours {
     background-color: orange;
+    color: var(--text-white-100);
+    padding: 5px;
+}
+
+.operation-status.en-attente {
+    background-color: rgb(48, 99, 125);
+    padding: 5px;
+}
+
+.operation-status.planifier {
+    background-color: gray;
     padding: 5px;
 }
 
@@ -445,13 +490,34 @@ body.nav-closed .header-right {
     padding: 5px;
 }
 
-.incident-status.moyenne {
+.priorite-operation.haute,
+.statut-command.annuler {
+    background-color: rgb(238, 61, 61);
+    color: var(--text-white-100);
+    padding: 5px;
+}
+
+.incident-status.moyenne,
+.priorite-operation.moyenne {
     background-color: orange;
     padding: 5px;
 }
 
-.incident-status.mineur {
+.priorite-operation.moyenne {
+    background-color: rgb(246, 183, 66);
+    color: var(--text-white-100);
+    padding: 5px;
+}
+
+.incident-status.mineur,
+.operation-status.terminer {
     background-color: green;
+    padding: 5px;
+}
+
+.priorite-operation.basse {
+    background-color: rgb(61, 192, 61);
+    color: var(--text-white-100);
     padding: 5px;
 }
 
@@ -554,11 +620,13 @@ body.nav-closed .header-right {
     display: flex;
 }
 
-.aeronefs-list, .incidents-list {
+.aeronefs-list,
+.incidents-list {
     margin: 30px;
 }
 
-.aeronefs-list h2, .incidents-list h2 {
+.aeronefs-list h2,
+.incidents-list h2 {
     font-family: 'Open Sans', 'Arial';
     color: white;
     margin: 0px 0px 0px 5px;
@@ -566,10 +634,33 @@ body.nav-closed .header-right {
 
 .avion-service,
 .avion-maintenance,
-.avion-hors-service, .incidents-critique, .incidents-moyenne, .incidents-mineur {
+.avion-hors-service,
+.incidents-critique,
+.incidents-moyenne,
+.incidents-mineur {
     background-color: var(--bg-black-200);
     padding: 20px;
+}
 
+.operations-planifier {
+    background-color: var(--bg-black-200);
+    padding: 20px;
+}
+
+.operations-enattente {
+    background-color: rgba(48, 99, 125, 0.5);
+    padding: 20px;
+}
+
+.operations-enattente h2 {
+    background-color: rgb(48, 99, 125);
+    padding: 8px;
+}
+
+.operations-planifier h2 {
+    background-color: var(--bg-black-100);
+    color: var(--text-black-100);
+    padding: 8px;
 }
 
 .avion-hors-service {
@@ -600,7 +691,8 @@ body.nav-closed .header-right {
 }
 
 /* Card Aeronef */
-.card-aeronef, .card-incident {
+.card-aeronef,
+.card-incident {
     background-color: var(--bg-black-100);
     padding: 15px;
     font-family: 'Open Sans', 'Arial';
@@ -626,17 +718,20 @@ body.nav-closed .header-right {
     color: white;
 }
 
-.card-aeronef .list-buttons, .card-incident .list-buttons {
+.card-aeronef .list-buttons,
+.card-incident .list-buttons {
     margin: 0px 30px;
 }
 
-.card-aeronef .btn-edit-aeronef, .card-incident .btn-edit-incident {
+.card-aeronef .btn-edit-aeronef,
+.card-incident .btn-edit-incident {
     background-color: var(--color-primary-200);
     color: var(--text-white-100);
     padding: 7px;
 }
 
-.card-aeronef .btn-delete-aeronef, .card-incident .btn-delete-incident {
+.card-aeronef .btn-delete-aeronef,
+.card-incident .btn-delete-incident {
     background-color: rgb(244, 67, 54);
     color: var(--text-white-100);
     padding: 7px;
@@ -745,6 +840,14 @@ body.nav-closed .header-right {
     padding: 10px;
 }
 
+.progress-bar .bg-progress {
+    background-color: var(--bg-black-50);
+}
+
+.progress-bar .bar {
+    background-color: var(--color-primary-200);
+}
+
 .button-vue.active,
 .button-vue:hover {
     background-color: var(--color-primary-200);
@@ -762,22 +865,6 @@ body.nav-closed .header-right {
     background-color: var(--bg-black-200);
     padding: 5px 10px;
     opacity: 0.7;
-}
-
-.table-operations {
-    margin: 30px;
-}
-
-.table-operations th {
-    font-family: 'Open Sans', 'Arial';
-    color: var(--text-black-100);
-    padding: 5px 10px 10px 0px;
-}
-
-.table-body-operations td {
-    font-family: 'Open Sans', 'Arial';
-    color: var(--text-black-100);
-    padding: 15px 0px;
 }
 
 ::-webkit-scrollbar {

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { HugeiconsIcon } from '@hugeicons/react';
-import { ArrowDown01Icon, UserCircleIcon, DateTimeIcon, Delete02Icon } from '@hugeicons/core-free-icons';
+import { ArrowDown01Icon, UserCircleIcon,AirplaneTakeOff01Icon, DateTimeIcon, Delete02Icon } from '@hugeicons/core-free-icons';
 
 
 const CardIncidents = (props: {
@@ -14,6 +14,7 @@ const CardIncidents = (props: {
         <div className='card-incident w-full rounded-lg shadow-md p-4 flex flex-col hover:scale-105 transition-all duration-300'>
             <Link to={`/incidents/${props.incident_id}`} className='card-link flex flex-col gap-4'>
                 <div className="card-header flex items-center justify-between gap-4">
+                    <HugeiconsIcon icon={AirplaneTakeOff01Icon} size={16} />
                     <h3 className='text-[16px] font-semibold'>{props.aeronefs}</h3>
                 </div>
                 <div>

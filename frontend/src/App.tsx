@@ -9,7 +9,11 @@ import Aeronefs from './pages/Aeronefs'
 import PerformancesAeronefs from './pages/PerformancesAeronefs'
 import Incidents from './pages/Incidents'
 import Operations from './pages/Operations'
-import SuiviOperations from './pages/SuiviOperations'
+import MaintenanceDueList from './pages/MaintenanceDueList'
+import NonRoutineMaintenance from './pages/NonRoutineMaintenance'
+import Stock from './pages/Stock'
+import CommandStock from './pages/CommandStock'
+import Prestaires from './pages/prestaires'
 import { ThemeProvider } from './components/ThemeContext';
 
 function App() {
@@ -27,7 +31,11 @@ function App() {
             <Route path='/home/performances' element={<PerformancesAeronefs />}></Route>
             <Route path='/home/incidents' element={<Incidents />}></Route>
             <Route path='/home/operations' element={<Operations />}></Route>
-            <Route path='/home/suivi_operations' element={<SuiviOperations />}></Route>
+            <Route path='/home/maintenances_programmees' element={<MaintenanceDueList />}></Route>
+            <Route path='/home/maintenances_non_programmees' element={<NonRoutineMaintenance />}></Route>
+            <Route path='/home/stock' element={<Stock />}></Route>
+            <Route path='/home/commandstock' element={<CommandStock />}></Route>
+            <Route path='/home/prestaires' element={<Prestaires />}></Route>
           </Route>
         </Routes>
       </ThemeProvider>
